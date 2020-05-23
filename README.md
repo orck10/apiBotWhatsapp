@@ -7,17 +7,22 @@ This is a api receive a message to save at MongoDB, where the bot will consult t
 
 ### Is madatory to run this project with mongoDB
 #### At the near future I will add a new version with a mongo in docker configuration
-At 'connection Mongo/connection.py', insert the mongodb parameters Like:
+For configure the database variables uncomment in main.py the line 4 and the follow code:
 
 ```
-self.client = MongoClient(host=$host$,
-                    port=$port$, 
-                    username=$username$, 
-                    password=$password$,
-                    authSource=$authSource$)
-        self.db = self.client['$dbName$']
-        self.collection = self.db['$collectionName$']
+config = ConfigParser()
+config["MONGO"] = { "host":"$host$",
+                    "port":"$port$",
+                    "username":"$username$",
+                    "password":"$password$",
+                    "authSource":"$authSource$",
+                    "db":"$db$",
+                    "collection":"$collection$"}
+with open('./mongo.conf', 'w') as configfile:
+    config.write(configfile)
 ```
+
+After set your database configurations and run python main.py, right after close and comment again.
 
 ### To run the project is necessary use python 3.6.+ and the pip installed
 
