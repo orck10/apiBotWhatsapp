@@ -34,8 +34,11 @@ For Windows :
 ## Use API
 
 The default addres for linux is "127.0.0.1" and default port is "5000", the url is "127.0.0.1:5000", if it runs at windows, you must confirm your docker machine address
+
 The api path is "/api/mensagem"
+
 To send mesages use the method "POST" 
+
 The json body is like :
 
 ```
