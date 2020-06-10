@@ -10,5 +10,32 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: 123456
     volumes:
       - ./mongovolume:/data/db
+    networks:
+      - whatsnetwork
     ports:
       - '27017:27017'
+  
+  servidorapi:
+    container_name: servidorwhats
+    restart: always
+    build: 
+      context: ./servidorAPI
+      dockerfile: Dockerfile
+      args:
+        HOST: mongo
+        PORT: 27017
+        USERNAME: ${USERNAME}
+        PASSWORD: ${PASSWORD}
+        AUTHSOURCE: ${AUTHSOURCE}
+        DB: ${DB}
+        COLLECTION: ${COLLECTION}
+    ports:
+      - '5000:5000'
+    networks:
+      - whatsnetwork
+    depends_on:
+      - mongo
+
+networks:
+  whatsnetwork:
+    driver: bridge

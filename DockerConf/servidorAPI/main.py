@@ -3,8 +3,8 @@ from flask import Flask
 from flask_restful import Api
 #from  configparser import ConfigParser
 
-'''
-config = ConfigParser()
+
+'''config = ConfigParser()
 config["MONGO"] = { "host":"$host$",
                     "port":"$port$",
                     "username":"$username$",
